@@ -1,0 +1,10 @@
+
+.finished {
+    margin-top: 50px;
+}
+
+
+.back {
+    display: flex;
+    justify-content: right;
+}
