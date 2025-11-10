@@ -42,7 +42,7 @@ const Tasks = () => {
             index={index}
             text={item.text}
             finished={item.finished}
-
+            changing={item.changing}
           />)
       }
 

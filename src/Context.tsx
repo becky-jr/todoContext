@@ -32,6 +32,8 @@ type TaskContextType = {
     addTask: (inpal: string) => void;
     finishedList: TaskType[];
     finishTask: (index: number) => void;
+    changeTaskBool: (index: number) => void;
+    changeTask: (id: number, inpValue: string) => void;
 }
 
 export let TaskContext = createContext<TaskContextType | null>(null)
@@ -39,6 +41,8 @@ export let TaskContext = createContext<TaskContextType | null>(null)
 export let TaskProvider = ({ children }: { children: ReactNode }) => {
 
     let [tasks, setTasks] = useState<TaskType[]>([])
+    console.log(tasks);
+
 
 
     const addTask = (inpVal: string) => {
@@ -62,9 +66,29 @@ export let TaskProvider = ({ children }: { children: ReactNode }) => {
         setFinishedList(updatedTasks.filter(item => item.finished));
     };
 
+
+    const changeTaskBool = (index: number) => {
+        const updateChange = tasks.map((item, i) => i === index ? { ...item, changing: !item.changing } : item)
+
+        setTasks(updateChange)
+    }
+
+
+    // const changeTask = (inpValue: string) => {
+    //     setTasks([...tasks, { text: inpValue, finished: false, changing: false }])
+    // }
+
+    const changeTask = (id: number, inpValue: string) => {
+        setTasks(tasks.map((task, index) =>
+            index === id
+                ? { ...task, text: inpValue, changing: false }
+                : task
+        ));
+    };
+
     return (
 
-        <TaskContext.Provider value={{ tasks, addTask, finishedList, finishTask }}>
+        <TaskContext.Provider value={{ tasks, addTask, finishedList, finishTask, changeTaskBool, changeTask }}>
 
             {children}
 

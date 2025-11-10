@@ -1,15 +1,9 @@
-
 import { Route, Routes } from 'react-router'
 import './App.css'
 import Finished from './components/Finished/Finished'
 import Tasks from './components/Tasks/Tasks'
 
-
-
-
-
 function App() {
-
 
   // let [tasks, setTasks] = useState<TaskType[]>([])
 
@@ -36,8 +30,6 @@ function App() {
 
   //   setFinishedList(tasks.filter(item => []))
   // };
-
-
 
   return (
 
